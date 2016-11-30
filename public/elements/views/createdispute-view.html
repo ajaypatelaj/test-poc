@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-sample-cards/blank-card.html">
+<link rel="import" href="../../bower_components/px-view-header/px-view-header.html">
+<link rel="import" href="../../bower_components/px-file-upload/px-file-upload.html">
+<dom-module id="createdispute-view">
+  <template>
+    <px-view-header title="Dispute Creator" style="display: block; margin-bottom: 6px;"></px-view-header>    
+    <blank-card id="myCard">
+    <form>
+       <fieldset class="form-field">
+          <div id="demo2" class="flex flex--row">
+            <div class="flex__item flex__item--top">
+              <div class="u-mt">
+                <label for="input1">Reason Code Category</label>
+                <select class="text-input input--regular">
+                    <option>Select</option>
+                    <option selected>Commercial</option>
+                    <option>Third</option>
+                  </select>
+              </div>
+              <div class="u-mt">                
+                <label for="input1">Dispute Reason Code</label>
+                <select class="text-input input--regular">
+                    <option>Select</option>
+                    <option selected>5J - FINAL ACCEPTANCE/PUNCH LIST ITEMS</option>
+                    <option>Third</option>
+                  </select>
+              </div>
+              <div class="u-mt">
+                <label for="input1">Source</label>                
+                <select class="text-input input--regular">
+                    <option>Select</option>
+                    <option selected>Client Aware</option>
+                    <option>Third</option>
+                  </select>
+              </div>
+              <div class="u-mt">                
+                <input id="checkbox1" type="checkbox"> 
+                <label for="input1"  class="label--inline">Self Resolved</label>
+              </div>
+              <div class="u-mt">
+                <label for="input1">Add Attachment</label>
+                <px-file-upload message="Drag and drop files here, or click the button below."></px-file-upload>
+              </div>
+            </div>
+            <div class="flex__item flex__item--baseline">              
+              <div class="u-mt">
+                <label for="input1">Dispute Coordinatior/Owner Name for Manual Routing</label>
+                <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text" value="PINCUS, ALEX W">
+              </div>
+              <div class="u-mt">
+                <input id="checkbox1" type="checkbox">
+                <label for="input1"  class="label--inline">Routing As Coordinator</label>
+              </div>
+              <div class="u-mt">
+                <textarea placeholder="Type something..." class="input--large">
+Contact Details:
+Name: CHRIS A/P
+Email: 
+PhoneNo: -530-406-3321-
+Fax: -530-406-3315
+Customer  Requesting full Credit
+Attachments: No
+              </textarea>
+              </div>
+              <div class="u-mt">
+                <button class="btn btn--default">Verify</button>
+                <button class="btn btn--primary">Create</button>
+              </div>
+            </div>
+          </div>          
+      </fieldset>
+    </form>
+    </blank-card>
+  </template>
+  <script>
+    Polymer({
+      is: 'createdispute-view',
+      properties: {},
+      ready: function() {
+        console.log('createdispute-view ready()')
+      }
+    });
+  </script>
+</dom-module>

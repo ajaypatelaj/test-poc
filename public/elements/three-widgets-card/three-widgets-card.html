@@ -1,0 +1,130 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!-- three-up card element import -->
+<link rel="import" href="../../bower_components/px-widget-cards/px-fourup.html">
+
+<!-- simple chart element imports -->
+<link rel="import" href="../../bower_components/px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html">
+<link rel="import" href="../../bower_components/px-simple-line-chart/px-simple-line-chart.html">
+<link rel="import" href="../../bower_components/px-simple-bar-chart/px-simple-bar-chart.html">
+<link rel="import" href="../../bower_components/px-simple-bar-chart/px-simple-bar-chart.html">
+<link rel="import" href="../../bower_components/px-vis-pie-chart/px-vis-pie-chart.html">
+
+<link rel="import" href="three-widgets-card-styles.html">
+
+<dom-module id="three-widgets-card">
+
+  <template>
+
+    <!-- apply imported style module -->
+    <style include="three-widgets-card-styles"></style>
+
+    <px-fourup id="widgetsx4" widget-header="Dispute Insights" widget-icon="fa-area-chart">
+    
+      <!-- <div class="widget-1">
+        <h1 class="epsilon">
+          [[_simpleDataValuesB.data.name]]
+        </h1>
+        <div class="flex">
+          <div class="flex">
+            <div class="large-value">987</div>
+            <div class="flex flex--col u-ml-">
+              <small class="caps">Output</small>
+              <small class="caps muted">mw</small>
+            </div>
+          </div>
+          <div class="u-ml+ flex">
+            <div class="large-value">1010</div>
+            <div class="flex flex--col u-ml-">
+              <small class="caps">Capacity</small>
+              <small class="caps muted">mw</small>
+            </div>
+          </div>
+        </div>
+        <px-simple-line-chart
+          line-data="[[_simpleDataValuesB.data.values]]"
+          width="auto"
+          max="10"
+          min="0"
+          threshold="5">
+        </px-simple-line-chart>
+        <iron-ajax
+          url="/api/time-series/simple-data/2"
+          last-response="{{_simpleDataValuesB}}"
+          auto>
+        </iron-ajax>
+      </div> -->
+
+      
+
+      <div class="widget-1">
+        <h1 class="epsilon">
+          [[_simpleDataValuesC.data.name]]
+        </h1>
+        <px-simple-bar-chart
+          width="auto"
+          height="195"
+          chart-data="[[_simpleDataValuesC.data.values]]"
+          legend-labels="[[_simpleDataValuesC.data.labels]]">
+        </px-simple-line-chart>
+        <iron-ajax
+          url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/BusinessWiseCategories"
+          last-response="{{_simpleDataValuesC}}"
+          auto>
+        </iron-ajax>
+      </div>
+
+      <div class="widget-2">
+        <!-- <h1 class="epsilon">[[_simpleDataValuesB.data.name]]</h1> -->
+        <h1 class="epsilon">Open Disputes by Reason Code</h1>
+        <div style='width:450px'>
+          <px-vis-pie-chart 
+          chart-data=[[_simpleDataValuesB]]
+          use-percentage="true" 
+          width="150" 
+          height="150" 
+          register-config='{"width":150,"type":"vertical"}' 
+          margin='{"top":"10","bottom":"10","left":"0","right":"0"}' 
+          series-config='{"mySerie":{"xAxisUnit":"pints","y":"y","x":"x"}}'>
+          </px-vis-pie-chart>
+          <iron-ajax
+          url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/OpenDisputesByReasonCode"
+          last-response="{{_simpleDataValuesB}}"
+          auto>
+        </iron-ajax>
+      </div>
+      </div>
+
+      <div class="widget-3">
+        <h1 class="epsilon">
+          [[_simpleDataValuesA.data.name]]
+        </h1>
+        <px-simple-horizontal-bar-chart
+          width="auto"
+          height="197"
+          chart-data="[[_simpleDataValuesA.data.values]]"
+          legend-labels="[[_simpleDataValuesA.data.labels]]">
+        </px-simple-line-chart>
+        <iron-ajax
+          url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/OpenCasesByBusiness"
+          last-response="{{_simpleDataValuesA}}"
+          auto>
+        </iron-ajax>
+
+      </div>
+
+      <div class="widget-4">
+        <h1>Test</h1>
+        <px-kpi title="Orders" value="30M" uom="USD" status-icon="arrow-up" status-label="12%" status-color="green" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
+      </div>
+
+    </px-fourup>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'three-widgets-card'
+    });
+  </script>
+
+</dom-module>

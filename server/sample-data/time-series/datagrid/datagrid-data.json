@@ -1,0 +1,58 @@
+{
+  "id": 1,
+  "data": [{
+    "DisputeNo": "1",
+    "CustomerNo": "0000000001",
+    "Business":"Aviation",
+    "Reason": "Material Shortage",
+    "Amount": "40600",
+    "DisputeStatus": "Pending with Collector",
+    "Currency": "EUR",
+    "DisputeDate": "2016-11-22",
+    "LoggedBy":"Business User"
+  },
+  {
+    "DisputeNo": "2",
+    "CustomerNo": "0000000002",
+    "Business":"Aviation",
+    "Reason": "Incorrect Tax",
+    "Amount": "15300",
+    "DisputeStatus": "Pending with Collector",
+    "Currency": "USD",
+    "DisputeDate": "2016-11-22",
+    "LoggedBy":"Collector"
+  },
+  {
+    "DisputeNo": "3",
+    "CustomerNo": "0000000003",
+    "Business":"Healthcare",
+    "Reason": "Commercial Negotiation",
+    "Amount": "30000",
+    "DisputeStatus": "Pending with Collector",
+    "Currency": "CAD",
+    "DisputeDate": "2016-11-22",
+    "LoggedBy":"Collector"
+  },
+  {
+    "DisputeNo": "4",
+    "CustomerNo": "0000000004",
+    "Business":"Healthcare",
+    "Reason": "Material Shortage",
+    "Amount": "50000",
+    "DisputeStatus": "Pending with Collector",
+    "Currency": "CAD",
+    "DisputeDate": "2016-11-24",
+    "LoggedBy":"Business User"
+  },
+  {
+    "DisputeNo": "5",
+    "CustomerNo": "0000000001",
+    "Business":"Healthcare",
+    "Reason": "Missing Contact Info",
+    "Amount": "5000",
+    "DisputeStatus": "Pending with Collector",
+    "Currency": "EUR",
+    "DisputeDate": "2016-11-26",
+    "LoggedBy":"Owner"
+  }]
+}

@@ -1,0 +1,18 @@
+{
+  "id": 3,
+  "data": {
+    "name": "Open Disputes by Categories",
+    "values": [
+      [7,0,0],
+      [1,11,5],
+      [3,7,4],
+      [1,0,0]      
+    ],
+    "labels": [
+      "Commercial Negotiation", "Incorrect Tax", "Material Shortage", "Missing Contact Info"
+    ],
+    "max": 20,
+    "min": 0,
+    "threshold": 20
+  }
+}
