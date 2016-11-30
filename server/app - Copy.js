@@ -66,15 +66,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var server = app.listen(process.env.VCAP_APP_PORT || 5000, function () {
 	console.log ('Server started on port: ' + server.address().port);
 });
-
-//app.use(express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public')));
-//secure route checks for authentication
-/*app.use('/', passport.authenticate('main', {
-   noredirect: false //redirect a user to the authentication page
-   }),
-   express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public'))
- );*/
-
+app.use(express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public')));
 
 /*******************************************************
 SET UP MOCK API ROUTES
@@ -95,7 +87,7 @@ app.use('/api/time-series', jsonServer.router(timeSeriesRoutes));
 
 if (uaaIsConfigured) {
   //login route redirect to predix uaa login page
-  app.get('/',passport.authenticate('predix', {'scope': ''}), function(req, res) {
+  app.get('/login',passport.authenticate('predix', {'scope': ''}), function(req, res) {
     // The request will be redirected to Predix for authentication, so this
     // function will not be called.
   });
@@ -122,8 +114,7 @@ if (uaaIsConfigured) {
     }), function(req, res) {
   	console.log('Accessing the secure route');
     // modify this to send a secure.html file if desired.
-  	// res.send('<h2>This is a sample secure route.</h2>');
-	express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public'));
+  	res.send('<h2>This is a sample secure route.</h2>');
   });
 }
 
