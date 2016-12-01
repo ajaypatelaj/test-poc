@@ -2,6 +2,7 @@
 
 <!-- three-up card element import -->
 <link rel="import" href="../../bower_components/px-widget-cards/px-fourup.html">
+<link rel="import" href="../../bower_components/px-widget-cards/px-threeup.html">
 
 <!-- simple chart element imports -->
 <link rel="import" href="../../bower_components/px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html">
@@ -9,6 +10,8 @@
 <link rel="import" href="../../bower_components/px-simple-bar-chart/px-simple-bar-chart.html">
 <link rel="import" href="../../bower_components/px-simple-bar-chart/px-simple-bar-chart.html">
 <link rel="import" href="../../bower_components/px-vis-pie-chart/px-vis-pie-chart.html">
+<link rel="import" href="../../bower_components/px-kpi/px-kpi.html">
+
 
 <link rel="import" href="three-widgets-card-styles.html">
 
@@ -17,13 +20,26 @@
   <template>
 
     <!-- apply imported style module -->
-    <style include="three-widgets-card-styles"></style>
+    <style include="three-widgets-card-styles"></style>   
+
+    
+    <px-threeup id="widgetsx3" widget-header="Dispute Stats - Monthly" widget-icon="fa-line-chart">
+      <div class="widget-1">
+        <px-kpi title="Total Disputes" value="122" uom="18K" status-icon="circle" status-color="orange" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
+      </div>
+      <div class="widget-2">
+        <px-kpi title="Open Disputes" value="55" uom="/122" status-icon="circle" status-color="red" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
+      </div>
+      <div class="widget-3">
+        <px-kpi title="Disputes Resoved" value="10K" uom="USD" status-icon="arrow-up" status-label="12%" status-color="green" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
+      </div>
+    </px-threeup>
 
     <px-fourup id="widgetsx4" widget-header="Dispute Insights" widget-icon="fa-area-chart">
     
-      <!-- <div class="widget-1">
+      <div class="widget-1">
         <h1 class="epsilon">
-          [[_simpleDataValuesB.data.name]]
+          [[_simpleDataValuesD.data.name]]
         </h1>
         <div class="flex">
           <div class="flex">
@@ -42,7 +58,7 @@
           </div>
         </div>
         <px-simple-line-chart
-          line-data="[[_simpleDataValuesB.data.values]]"
+          line-data="[[_simpleDataValuesD.data.values]]"
           width="auto"
           max="10"
           min="0"
@@ -50,31 +66,12 @@
         </px-simple-line-chart>
         <iron-ajax
           url="/api/time-series/simple-data/2"
-          last-response="{{_simpleDataValuesB}}"
-          auto>
-        </iron-ajax>
-      </div> -->
-
-      
-
-      <div class="widget-1">
-        <h1 class="epsilon">
-          [[_simpleDataValuesC.data.name]]
-        </h1>
-        <px-simple-bar-chart
-          width="auto"
-          height="195"
-          chart-data="[[_simpleDataValuesC.data.values]]"
-          legend-labels="[[_simpleDataValuesC.data.labels]]">
-        </px-simple-line-chart>
-        <iron-ajax
-          url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/BusinessWiseCategories"
-          last-response="{{_simpleDataValuesC}}"
+          last-response="{{_simpleDataValuesD}}"
           auto>
         </iron-ajax>
       </div>
 
-      <div class="widget-2">
+      <div class="widget-3">
         <!-- <h1 class="epsilon">[[_simpleDataValuesB.data.name]]</h1> -->
         <h1 class="epsilon">Open Disputes by Reason Code</h1>
         <div style='width:450px'>
@@ -92,10 +89,27 @@
           last-response="{{_simpleDataValuesB}}"
           auto>
         </iron-ajax>
-      </div>
+        </div>
       </div>
 
-      <div class="widget-3">
+      <div class="widget-2">
+        <h1 class="epsilon">
+          [[_simpleDataValuesC.data.name]]
+        </h1>
+        <px-simple-bar-chart
+          width="auto"
+          height="195"
+          chart-data="[[_simpleDataValuesC.data.values]]"
+          legend-labels="[[_simpleDataValuesC.data.labels]]">
+        </px-simple-line-chart>
+        <iron-ajax
+          url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/BusinessWiseCategories"
+          last-response="{{_simpleDataValuesC}}"
+          auto>
+        </iron-ajax>
+      </div>
+
+      <div class="widget-4">
         <h1 class="epsilon">
           [[_simpleDataValuesA.data.name]]
         </h1>
@@ -113,12 +127,9 @@
 
       </div>
 
-      <div class="widget-4">
-        <h1>Test</h1>
-        <px-kpi title="Orders" value="30M" uom="USD" status-icon="arrow-up" status-label="12%" status-color="green" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
-      </div>
-
     </px-fourup>
+
+    
   </template>
 
   <script>

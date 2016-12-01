@@ -4,10 +4,50 @@
 <link rel="import" href="../../bower_components/px-file-upload/px-file-upload.html">
 <dom-module id="createdispute-view">
   <template>
-    <px-view-header title="Dispute Creator" style="display: block; margin-bottom: 6px;"></px-view-header>    
+    <px-view-header title="Dispute Management" style="display: block; margin-bottom: 6px;"></px-view-header>    
     <blank-card id="myCard">
     <form>
        <fieldset class="form-field">
+        <div id="demo2" class="flex flex--row">
+            <div class="flex__item flex__item--top">
+              <div class="u-mt">
+                <label for="input1">Business Name</label>
+                <select class="text-input input--regular">
+                    <option selected>Select</option>
+                    <option>Commercial</option>
+                    <option>Third</option>
+                  </select>
+              </div>
+            </div>
+            <div class="flex__item flex__item--baseline">
+              <div class="u-mt">
+                <label for="input1">Customer Name</label>
+                <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text">
+              </div>
+            </div>
+        </div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+              <th>Table heading</th>
+            </tr>
+            <tr>
+              <td>Table cell</td>
+              <td>Table cell wide</td>
+              <td>Table cell wide wide</td>
+              <td>Table cell wide wide wide</td>
+            </tr>
+            <tr>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>
           <div id="demo2" class="flex flex--row">
             <div class="flex__item flex__item--top">
               <div class="u-mt">

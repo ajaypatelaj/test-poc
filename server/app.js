@@ -23,8 +23,8 @@ var passportConfig = require('./passport-config');
 var node_env = process.env.node_env || 'development';
 if (node_env === 'development') {
   var devConfig = require('./localConfig.json')[node_env];
-	proxy.setServiceConfig(config.buildVcapObjectFromLocalConfig(devConfig));
-	proxy.setUaaConfig(devConfig);
+  proxy.setServiceConfig(config.buildVcapObjectFromLocalConfig(devConfig));
+  proxy.setUaaConfig(devConfig);
 }
 
 console.log('************'+node_env+'******************');
@@ -34,7 +34,7 @@ var uaaIsConfigured = config.clientId &&
     config.uaaURL.indexOf('https') === 0 &&
     config.base64ClientCredential;
 if (uaaIsConfigured) {
-	passport = passportConfig.configurePassportStrategy(config);
+  passport = passportConfig.configurePassportStrategy(config);
 }
 
 /**********************************************************************
@@ -47,11 +47,11 @@ app.use(cookieParser('predixsample'));
 // Initializing default session store
 // *** Use this in-memory session store for development only. Use redis for prod. **
 app.use(session({
-	secret: 'predixsample',
-	name: 'cookie_name',
-	proxy: true,
-	resave: true,
-	saveUninitialized: true}));
+  secret: 'predixsample',
+  name: 'cookie_name',
+  proxy: true,
+  resave: true,
+  saveUninitialized: true}));
 
 if (uaaIsConfigured) {
   app.use(passport.initialize());
@@ -64,17 +64,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 var server = app.listen(process.env.VCAP_APP_PORT || 5000, function () {
-	console.log ('Server started on port: ' + server.address().port);
+  console.log ('Server started on port: ' + server.address().port);
 });
-
-//app.use(express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public')));
-//secure route checks for authentication
-/*app.use('/', passport.authenticate('main', {
-   noredirect: false //redirect a user to the authentication page
-   }),
-   express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public'))
- );*/
-
+app.use(express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public')));
 
 /*******************************************************
 SET UP MOCK API ROUTES
@@ -90,12 +82,12 @@ app.use('/api/predix-asset', jsonServer.router(assetRoutes));
 app.use('/api/time-series', jsonServer.router(timeSeriesRoutes));
 
 /****************************************************************************
-	SET UP EXPRESS ROUTES
+  SET UP EXPRESS ROUTES
 *****************************************************************************/
 
 if (uaaIsConfigured) {
   //login route redirect to predix uaa login page
-  app.get('/',passport.authenticate('predix', {'scope': ''}), function(req, res) {
+  app.get('/login',passport.authenticate('predix', {'scope': ''}), function(req, res) {
     // The request will be redirected to Predix for authentication, so this
     // function will not be called.
   });
@@ -103,40 +95,39 @@ if (uaaIsConfigured) {
   // access real Predix services using this route.
   // the proxy will add UAA token and Predix Zone ID.
   app.use('/predix-api',
-  	passport.authenticate('main', {
-  		noredirect: true
-  	}),
-  	proxy.router);
+    passport.authenticate('main', {
+      noredirect: true
+    }),
+    proxy.router);
 
   //callback route redirects to secure route after login
   app.get('/callback', passport.authenticate('predix', {
-  	failureRedirect: '/'
+    failureRedirect: '/'
   }), function(req, res) {
-  	console.log('Redirecting to secure route...');
-  	res.redirect('/secure');
+    console.log('Redirecting to secure route...');
+    res.redirect('/secure');
     });
 
   //secure route checks for authentication
   app.get('/secure', passport.authenticate('main', {
-  	noredirect: true //Don't redirect a user to the authentication page, just show an error
+    noredirect: true //Don't redirect a user to the authentication page, just show an error
     }), function(req, res) {
-  	console.log('Accessing the secure route');
+    console.log('Accessing the secure route');
     // modify this to send a secure.html file if desired.
-  	// res.send('<h2>This is a sample secure route.</h2>');
-	express.static(path.join(__dirname, process.env['base-dir'] ? process.env['base-dir'] : '../public'));
+    res.send('<h2>This is a sample secure route.</h2>');
   });
 }
 
 //logout route
 app.get('/logout', function(req, res) {
-	req.session.destroy();
-	req.logout();
+  req.session.destroy();
+  req.logout();
   passportConfig.reset(); //reset auth tokens
   res.redirect(config.uaaURL + '/logout?redirect=' + config.appURL);
 });
 
 app.get('/favicon.ico', function (req, res) {
-	res.send('favicon.ico');
+  res.send('favicon.ico');
 });
 
 // Sample route middleware to ensure user is authenticated.
@@ -159,34 +150,34 @@ function ensureAuthenticated(req, res, next) {
 // catch 404 and forward to error handler
 app.use(function(err, req, res, next) {
   console.error(err.stack);
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // development error handler - prints stacktrace
 if (node_env === 'development') {
-	app.use(function(err, req, res, next) {
-		if (!res.headersSent) {
-			res.status(err.status || 500);
-			res.send({
-				message: err.message,
-				error: err
-			});
-		}
-	});
+  app.use(function(err, req, res, next) {
+    if (!res.headersSent) {
+      res.status(err.status || 500);
+      res.send({
+        message: err.message,
+        error: err
+      });
+    }
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-	if (!res.headersSent) {
-		res.status(err.status || 500);
-		res.send({
-			message: err.message,
-			error: {}
-		});
-	}
+  if (!res.headersSent) {
+    res.status(err.status || 500);
+    res.send({
+      message: err.message,
+      error: {}
+    });
+  }
 });
 
 module.exports = app;
