@@ -1,11 +1,11 @@
 {
-  "id": 2,
-  "title": "Data Table View",
-  "slug": "data-table-view",
+  "id": 4,
+  "title": "Business Overview",
+  "slug": "business-overview",
   "cardOrder": null,
-  "createTimeStamp": "2015-11-24T23:02:53.838Z",
+  "createTimeStamp": "2016-08-31T23:02:53.838Z",
   "tags": [{
-    "id": 2,
-    "value": "parent-asset"
+    "id": 4,
+    "value": "child-asset"
   }]
 }

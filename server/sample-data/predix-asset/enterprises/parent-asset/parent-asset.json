@@ -1,16 +1,52 @@
 {
-  "id": "parent-asset",
+  "id": "business-view",
   "data": [{
-    "id": "child-asset",
-    "name": "Child Asset",
-    "parent": "/enterprises/parent-asset",
-    "parentId": "/enterprises/parent-asset",
-    "description": "Child Asset",
-    "uri": "/sites/child-asset",
+    "id": "oil-gas",
+    "name": "Oil & Gas",
+    "parent": "/enterprises/business-view",
+    "parentId": "/enterprises/business-view",
+    "description": "Oil & Gas",
+    "uri": "/sites/child-asset1",
+    "level": "site",
+    "isOpenable": false
+  },{
+    "id": "healthcare",
+    "name": "Healthcare",
+    "parent": "/enterprises/business-view",
+    "parentId": "/enterprises/business-view",
+    "description": "Healthcare",
+    "uri": "/sites/child-asset1",
+    "level": "site",
+    "isOpenable": true
+  },{
+    "id": "transport",
+    "name": "Transport",
+    "parent": "/enterprises/business-view",
+    "parentId": "/enterprises/business-view",
+    "description": "Transport",
+    "uri": "/sites/child-asset1",
+    "level": "site",
+    "isOpenable": true
+  },{
+    "id": "power-water",
+    "name": "Power & Water",
+    "parent": "/enterprises/business-view",
+    "parentId": "/enterprises/business-view",
+    "description": "power-water",
+    "uri": "/sites/child-asset1",
+    "level": "site",
+    "isOpenable": true
+  },{
+    "id": "aviation",
+    "name": "Aviation",
+    "parent": "/enterprises/business-view",
+    "parentId": "/enterprises/business-view",
+    "description": "aviation",
+    "uri": "/sites/child-asset1",
     "level": "site",
     "isOpenable": true
   }],
   "meta": {
-    "parentId": "parent-asset"
+    "parentId": "business-view"
   }
 }

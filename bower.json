@@ -36,7 +36,8 @@
     "px-theme": "^1.1.2",
     "px-vis-timeseries": "^0.3.0",
     "px-vis-xy-chart": "^0.1.0",
-    "px-view-header": "^0.1.1"
+    "px-view-header": "^0.1.1",
+    "px-tabs": "^0.5.10"
   },
   "devDependencies": {
     "px-forms-design": "^0.3.17",

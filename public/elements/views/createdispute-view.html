@@ -1,77 +1,134 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-tabs/px-tab-set.html"/>
 <link rel="import" href="../../bower_components/px-sample-cards/blank-card.html">
 <link rel="import" href="../../bower_components/px-view-header/px-view-header.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html" />
 <link rel="import" href="../../bower_components/px-file-upload/px-file-upload.html">
+
 <dom-module id="createdispute-view">
   <template>
     <px-view-header title="Dispute Management" style="display: block; margin-bottom: 6px;"></px-view-header>    
     <blank-card id="myCard">
-    <form>
+ <px-tab-set selected="{{selected}}">
+        <px-tab>Create Dispute</px-tab>
+        <px-tab>Route Dispute</px-tab>
+        <px-tab>Modify Dispute</px-tab>
+        <px-tab>Close Dispute</px-tab>
+    </px-tab-set>
+    <px-tab-pages selected="{{selected}}">
+        <div>
+
+          <form>
        <fieldset class="form-field">
         <div id="demo2" class="flex flex--row">
-            <div class="flex__item flex__item--top">
-              <div class="u-mt">
-                <label for="input1">Business Name</label>
-                <select class="text-input input--regular">
-                    <option selected>Select</option>
-                    <option>Commercial</option>
-                    <option>Third</option>
-                  </select>
-              </div>
-            </div>
-            <div class="flex__item flex__item--baseline">
-              <div class="u-mt">
-                <label for="input1">Customer Name</label>
-                <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text">
-              </div>
-            </div>
+        <div class="flex__item flex__item--top">
+          <div class="u-mt">
+            <label for="input1">Business Name</label>
+            <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text" value="Aviation" readonly>
+          </div>
         </div>
-        <table class="table">
+        <div class="flex__item flex__item--baseline">
+           <div class="u-mt">
+              <label for="input1">Customer Name</label>
+              <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text">
+          </div>
+        </div>
+        </div>
+
+        <px-data-table table-data='[
+  {
+    "Disputed ?": "No",
+    "Invoice No": "98398648",
+    "Invoice Date": "01-Sep-2016",
+    "Due Date": "01-Oct-2016",
+    "Amount": "347.48",
+    "Project No": "P000023",
+    "PO": "SIGNED SA"
+  },
+  {
+    "Disputed ?": "No",
+    "Invoice No": "98398649",
+    "Invoice Date": "05-Sep-2016",
+    "Due Date": "15-Oct-2016",
+    "Amount": "14547.96",
+    "Project No": "P000025",
+    "PO": "SIGNED SA"
+  }
+]' striped="true" filterable="true" selectable="true" hide-pagination-control="true"></px-data-table>
+    
+        <!-- <table class="table">
           <tbody>
             <tr>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
+              <th>Disputed ?</th>
+              <th>Invoice No</th>
+              <th>Invoice Date</th>
+              <th>Due Date</th>
+        <th>Amount</th>
+        <th>Requisition No</th>
+        <th>Project No</th>
+        <th>PO</th>
             </tr>
             <tr>
-              <td>Table cell</td>
-              <td>Table cell wide</td>
-              <td>Table cell wide wide</td>
-              <td>Table cell wide wide wide</td>
+              <td>No</td>
+              <td>98398648</td>
+              <td>01-Sep-2016</td>
+              <td>01-Oct-2016</td>
+        <td>347.48</td>
+        <td>1900103794</td>
+        <td>P4563478</td>
+        <td>SIGNED SA</td>
             </tr>
             <tr>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
+              <td>No</td>
+              <td>98398650</td>
+              <td>05-Sep-2016</td>
+              <td>15-Oct-2016</td>
+        <td>1948.96</td>
+        <td>1900103795</td>
+        <td>P4578478</td>
+        <td>SIGNED SA</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
           <div id="demo2" class="flex flex--row">
             <div class="flex__item flex__item--top">
-              <div class="u-mt">
-                <label for="input1">Reason Code Category</label>
+      
+       <div class="u-mt">
+                <label for="input1">Reason Code Description</label>
                 <select class="text-input input--regular">
-                    <option>Select</option>
-                    <option selected>Commercial</option>
-                    <option>Third</option>
+                    <option>--Select--</option>
+                    <option selected>BILLILNG</option>
+          <option>COMMERCIAL</option>
+          <option>OTHERS</option>
+          <option>SHIPPING</option>
                   </select>
               </div>
+      
+              
               <div class="u-mt">                
-                <label for="input1">Dispute Reason Code</label>
+                <label for="input1">Dispute Reason Code</label>                
                 <select class="text-input input--regular">
-                    <option>Select</option>
-                    <option selected>5J - FINAL ACCEPTANCE/PUNCH LIST ITEMS</option>
-                    <option>Third</option>
+          <option>--Select--</option>
+                    <option>6A - INCORRECT FREIGHT BILLING</option>
+                    <option selected>6C - INCORRECT OR MISSING P O NUMBER</option>
+                    <option>6D - CUSTOMER PORTAL ISSUE</option>
+          <option>6D - CUSTOMER PORTAL ISSUE</option>
+          <option>6E - INCORRECT PRICE</option>
+          <option>6F - WRONG PART # ON INVOICE</option>
+          <option>6H - DISPUTED LoC/CAD/DRAFT-BILL QUALITY</option>
+          <option>6J - DOCUMENTATN ISSUES/MISSING BACKUP</option>
+          <option>6K - INVOICED EARLY, NOT PER CONTRACT</option>
+          <option>6L - DUPLICATE BILLING</option>
+          <option>6V - INCORRECT TERMS OR DUE DATE</option>
                   </select>
               </div>
               <div class="u-mt">
-                <label for="input1">Source</label>                
+               <label for="input1">Source</label>                
                 <select class="text-input input--regular">
-                    <option>Select</option>
-                    <option selected>Client Aware</option>
-                    <option>Third</option>
+          <option>--Select--</option>
+                    <option>CLIENT AWARE</option>
+                    <option selected>CLIENT INITIATED</option>
+                    <option>CLIENT INITIATED - CLIENT NOT AWARE</option>
                   </select>
               </div>
               <div class="u-mt">                
@@ -84,6 +141,10 @@
               </div>
             </div>
             <div class="flex__item flex__item--baseline">              
+              <div class="u-mt">
+                <label for="input1">Reason Code Description</label>
+                <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text">
+              </div>
               <div class="u-mt">
                 <label for="input1">Dispute Coordinatior/Owner Name for Manual Routing</label>
                 <input id="input1" placeholder="Type something..." class="text-input input--regular" type="text" value="PINCUS, ALEX W">
@@ -111,6 +172,12 @@ Attachments: No
           </div>          
       </fieldset>
     </form>
+          
+        </div>
+        <!-- <div>Tab 2 content</div>
+        <div>Tab 3 content</div> -->
+    </px-tab-pages>
+    
     </blank-card>
   </template>
   <script>
@@ -118,8 +185,14 @@ Attachments: No
       is: 'createdispute-view',
       properties: {},
       ready: function() {
+        this.selected = 0;
         console.log('createdispute-view ready()')
       }
     });
   </script>
 </dom-module>
+<style type="text/css">
+.px-card-header{
+  display: none;
+}
+</style>

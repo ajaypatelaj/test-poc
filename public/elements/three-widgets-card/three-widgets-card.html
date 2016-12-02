@@ -23,9 +23,9 @@
     <style include="three-widgets-card-styles"></style>   
 
     
-    <px-threeup id="widgetsx3" widget-header="Dispute Stats - Monthly" widget-icon="fa-line-chart">
+    <px-threeup id="widgetsx3" widget-header="Dispute Stats - Weekly" widget-icon="fa-line-chart">
       <div class="widget-1">
-        <px-kpi title="Total Disputes" value="122" uom="18K" status-icon="circle" status-color="orange" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
+        <px-kpi title="Total Disputes" value="122" uom="$ 18K" status-icon="circle" status-color="orange" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
       </div>
       <div class="widget-2">
         <px-kpi title="Open Disputes" value="55" uom="/122" status-icon="circle" status-color="red" spark-type="line" spark-data='[{"x":1397102460000,"y":0.56},{"x":1397139660000,"y":0.4},{"x":1397177400000,"y":0.43},{"x":1397228040000,"y":0.33},{"x":1397248260000,"y":0.47},{"x":1397291280000,"y":0.41},{"x":1397318100000,"y":0.26},{"x":1397342100000,"y":0.42},{"x":1397390820000,"y":0.27},{"x":1397408100000,"y":0.38},{"x":1397458800000,"y":0.36},{"x":1397522940000,"y":0.32}]'></px-kpi>
@@ -36,63 +36,8 @@
     </px-threeup>
 
     <px-fourup id="widgetsx4" widget-header="Dispute Insights" widget-icon="fa-area-chart">
-    
+
       <div class="widget-1">
-        <h1 class="epsilon">
-          [[_simpleDataValuesD.data.name]]
-        </h1>
-        <div class="flex">
-          <div class="flex">
-            <div class="large-value">987</div>
-            <div class="flex flex--col u-ml-">
-              <small class="caps">Output</small>
-              <small class="caps muted">mw</small>
-            </div>
-          </div>
-          <div class="u-ml+ flex">
-            <div class="large-value">1010</div>
-            <div class="flex flex--col u-ml-">
-              <small class="caps">Capacity</small>
-              <small class="caps muted">mw</small>
-            </div>
-          </div>
-        </div>
-        <px-simple-line-chart
-          line-data="[[_simpleDataValuesD.data.values]]"
-          width="auto"
-          max="10"
-          min="0"
-          threshold="5">
-        </px-simple-line-chart>
-        <iron-ajax
-          url="/api/time-series/simple-data/2"
-          last-response="{{_simpleDataValuesD}}"
-          auto>
-        </iron-ajax>
-      </div>
-
-      <div class="widget-3">
-        <!-- <h1 class="epsilon">[[_simpleDataValuesB.data.name]]</h1> -->
-        <h1 class="epsilon">Open Disputes by Reason Code</h1>
-        <div style='width:450px'>
-          <px-vis-pie-chart 
-          chart-data=[[_simpleDataValuesB]]
-          use-percentage="true" 
-          width="150" 
-          height="150" 
-          register-config='{"width":150,"type":"vertical"}' 
-          margin='{"top":"10","bottom":"10","left":"0","right":"0"}' 
-          series-config='{"mySerie":{"xAxisUnit":"pints","y":"y","x":"x"}}'>
-          </px-vis-pie-chart>
-          <iron-ajax
-          url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/OpenDisputesByReasonCode"
-          last-response="{{_simpleDataValuesB}}"
-          auto>
-        </iron-ajax>
-        </div>
-      </div>
-
-      <div class="widget-2">
         <h1 class="epsilon">
           [[_simpleDataValuesC.data.name]]
         </h1>
@@ -100,7 +45,9 @@
           width="auto"
           height="195"
           chart-data="[[_simpleDataValuesC.data.values]]"
-          legend-labels="[[_simpleDataValuesC.data.labels]]">
+          legend-labels="[[_simpleDataValuesC.data.labels]]"
+          colors='["#5da5da","#faa43a","#60bd68","#f17cb0","#b2912f","#b276b2","#decf3f","#f15854","#4d4d4d"]'
+          >
         </px-simple-line-chart>
         <iron-ajax
           url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/BusinessWiseCategories"
@@ -109,7 +56,7 @@
         </iron-ajax>
       </div>
 
-      <div class="widget-4">
+      <div class="widget-2">
         <h1 class="epsilon">
           [[_simpleDataValuesA.data.name]]
         </h1>
@@ -117,14 +64,15 @@
           width="auto"
           height="197"
           chart-data="[[_simpleDataValuesA.data.values]]"
-          legend-labels="[[_simpleDataValuesA.data.labels]]">
+          legend-labels="[[_simpleDataValuesA.data.labels]]"          
+          >
+
         </px-simple-line-chart>
         <iron-ajax
           url="https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/OpenCasesByBusiness"
           last-response="{{_simpleDataValuesA}}"
           auto>
         </iron-ajax>
-
       </div>
 
     </px-fourup>

@@ -13,6 +13,8 @@ $inuit-heading-size-5       : 16px;
 @import "px-viewport-design/_base.viewport.scss";
 @import "px-headings-design/_base.headings.scss";
 
+$inuit-enable-table--rows : true;
+@import 'px-tables-design/_base.tables.scss';
 // Objects
 
 // Component

@@ -5,7 +5,7 @@
   "attributes": {
     "elementHref": "/elements/data-table-card/data-table-card.html",
     "dataUrl": "https://predix-java-microservice-cf-gecars.run.aws-usw02-pr.ice.predix.io/dsp/Disputes/all",
-    "headerText": "HRSG Unit Data"
+    "headerText": "Disputes Data List"
   },
   "createTimeStamp": "2015-11-24T23:02:53.816Z",
   "tags": []

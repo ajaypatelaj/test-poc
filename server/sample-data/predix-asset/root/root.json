@@ -1,12 +1,12 @@
 {
   "id": "root",
   "data": [{
-    "id": "parent-asset",
-    "name": "Parent Asset",
-    "parent": "/parent-asset",
-    "parentId": "/parent-asset",
-    "description": "Parent Asset Description",
-    "uri": "/enterprises/parent-asset",
+    "id": "business-view",
+    "name": "Business",
+    "parent": "/business-view",
+    "parentId": "/business-view",
+    "description": "Business Description",
+    "uri": "/enterprises/business-view",
     "level": "enterprise",
     "isOpenable": true
   }],
